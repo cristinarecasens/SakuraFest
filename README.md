@@ -16,7 +16,7 @@ La web està allotjada en el següent enllaç: https://sakurafest.infinityfree.m
 - **Calendari visual** del mes d'abril amb recompte d'activitats per dia i vista detallada en desplegar.
 - **Fitxa d'activitat** amb tota la informació, secció de comentaris i votacions (👍/👎).
 - **Mapa interactiu** amb Google Maps i marcadors de colors segons la ubicació (Pavelló A, Pavelló B, Exterior).
-- **Registre i login d'usuaris** amb contrasenyes encriptades (bcrypt).
+- **Registre i login d'usuaris** amb contrasenyes encriptades (bcrypt). (El mail pot ser fictici, no hi ha verificació).
 - **Sistema de comentaris** vinculat a l'usuari amb un comentari per activitat.
 
 ## 🛠️ Tecnologies
