@@ -1,0 +1,4 @@
+# Bloquejar accés al fitxer .env des del navegador
+<FilesMatch "^\.env$">
+    Require all denied
+</FilesMatch>
