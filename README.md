@@ -8,7 +8,7 @@ El lloc web permet als usuaris explorar les **150 activitats** programades duran
 
 ## ⚙️ Vistia la web
 
-La web està allotjada en el següent enllaç: (https://sakurafest.infinityfree.me/)
+La web està allotjada en el següent enllaç: https://sakurafest.infinityfree.me/, tot i que es responsive, no està ben optimitzada per mòbil i es recomana veure per ordinador 💻.
 
 ## 🚀 Funcionalitats
 
