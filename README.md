@@ -1,62 +1,62 @@
 # 🌸 SakuraFest
 
-**SakuraFest** és un projecte web que simula el lloc oficial d'un festival de temàtica japonesa celebrat a Barcelona els dies **17, 18 i 19 d'abril de 2026**. El festival reuneix activitats relacionades amb el manga, l'anime, els videojocs i la cultura japonesa en general.
+**SakuraFest** is a web project in catalan that simulates the official website of a Japanese-themed festival held in Barcelona on **April 17, 18 and 19, 2026**. The festival brings together activities related to manga, anime, video games and Japanese culture in general.
 
-## 📖 Descripció
+## 📖 Description
 
-El lloc web permet als usuaris explorar les **150 activitats** programades durant els tres dies del festival, incloent tallers, concursos, xerrades, exhibicions, botigues i concerts. Els visitants poden consultar la informació de cada activitat, veure la seva ubicació en un mapa interactiu i deixar comentaris amb sistema de votació.
+The website allows users to explore the **150 activities** scheduled during the three days of the festival, including workshops, contests, talks, exhibitions, shops and concerts. Visitors can view the information for each activity, see its location on an interactive map, and leave comments with a voting system.
 
-## ⚙️ Vistia la web
+## ⚙️ Visit the website
 
-La web està allotjada en el següent enllaç: https://sakurafest.infinityfree.me/, tot i que es responsive, no està ben optimitzada per mòbil i es recomana veure per ordinador 💻.
+The website is hosted at the following link: https://sakurafest.infinityfree.me/. Although it is responsive, it is not well optimized for mobile devices and it is recommended to view it on a computer 💻.
 
-## 🚀 Funcionalitats
+## 🚀 Features
 
-- **Llistat d'activitats** amb filtres per nom, dia, ubicació, tipus i preu, i ordenació alfabètica o per horari.
-- **Calendari visual** del mes d'abril amb recompte d'activitats per dia i vista detallada en desplegar.
-- **Fitxa d'activitat** amb tota la informació, secció de comentaris i votacions (👍/👎).
-- **Mapa interactiu** amb Google Maps i marcadors de colors segons la ubicació (Pavelló A, Pavelló B, Exterior).
-- **Registre i login d'usuaris** amb contrasenyes encriptades (bcrypt). (El mail pot ser fictici, no hi ha verificació).
-- **Sistema de comentaris** vinculat a l'usuari amb un comentari per activitat.
+- **Activity listing** with filters by name, day, location, type and price, and alphabetical or time-based sorting.
+- **Visual calendar** for the month of April with the number of activities per day and a detailed view when expanded.
+- **Activity page** with full information, comments section and voting system (👍/👎).
+- **Interactive map** with Google Maps and color markers depending on the location (Pavilion A, Pavilion B, Outdoor).
+- **User registration and login** with encrypted passwords (bcrypt). (The email can be fictional, there is no verification).
+- **Comment system** linked to the user with one comment per activity.
 
-## 🛠️ Tecnologies
+## 🛠️ Technologies
 
-| Capa | Tecnologia |
+| Layer | Technology |
 |------|------------|
 | Backend | PHP (PDO) |
-| Base de dades | MySQL / MariaDB |
-| Frontend | HTML, CSS, JavaScript vanilla |
-| Mapes | Google Maps JavaScript API |
-| Servidor local | XAMPP (Apache) |
+| Database | MySQL / MariaDB |
+| Frontend | HTML, CSS, Vanilla JavaScript |
+| Maps | Google Maps JavaScript API |
+| Local server | XAMPP (Apache) |
 | Hosting | InfinityFree |
 
-## 📁 Estructura del projecte
+## 📁 Project Structure
 
 ```
 sakurafest/
-├── index.php              # Pàgina principal amb llistat d'activitats
-├── calendari.php          # Vista de calendari
-├── fitxa.php              # Fitxa detallada d'una activitat
-├── maps.php               # Mapa interactiu amb Google Maps
-├── login.php              # Gestió del login
-├── login.html             # Formulari de login
-├── signup.html            # Formulari de registre
-├── crear_compte.php       # Gestió del registre d'usuaris
-├── afegir_comentari.php   # Gestió d'inserció de comentaris
-├── logout.php             # Tancament de sessió
-├── config_db.php          # Configuració de la connexió a la BBDD
-├── script.js              # Lògica de filtres i ordenació (client)
-├── bbdd_salo_manga.sql    # Script SQL per crear la base de dades
-├── .env                   # Variables d'entorn (credencials) — NO inclòs al repo
-├── .htaccess              # Protecció del fitxer .env
-├── .gitignore             # Fitxers exclosos de Git
+├── index.php              # Main page with activity listing
+├── calendari.php          # Calendar view
+├── fitxa.php              # Detailed activity page
+├── maps.php               # Interactive map with Google Maps
+├── login.php              # Login management
+├── login.html             # Login form
+├── signup.html            # Registration form
+├── crear_compte.php       # User registration management
+├── afegir_comentari.php   # Comment insertion management
+├── logout.php             # Logout
+├── config_db.php          # Database connection configuration
+├── script.js              # Filter and sorting logic (client-side)
+├── bbdd_salo_manga.sql    # SQL script to create the database
+├── .env                   # Environment variables (credentials) — NOT included in repo
+├── .htaccess              # Protection for the .env file
+├── .gitignore             # Git ignored files
 └── assets/
-    ├── img/               # Icones i logo del festival
+    ├── img/               # Festival icons and logo
     └── styles/
-        ├── main.css       # Estils generals, header, cards, calendari
-        ├── fitxa.css      # Estils de la fitxa i comentaris
-        └── login.css      # Estils dels formularis de login i registre
+        ├── main.css       # General styles: header, cards, calendar
+        ├── fitxa.css      # Styles for activity page and comments
+        └── login.css      # Styles for login and registration forms
 ```
 
-## 👤 Autoria
+## 👤 Autor
 Projecte desenvolupat com a treball de DAW2 per a Cristina Recasens.
