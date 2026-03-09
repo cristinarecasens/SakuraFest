@@ -39,8 +39,6 @@ sakurafest/
 ├── fitxa.php              # Detailed activity page
 ├── maps.php               # Interactive map with Google Maps
 ├── login.php              # Login management
-├── login.html             # Login form
-├── signup.html            # Registration form
 ├── crear_compte.php       # User registration management
 ├── afegir_comentari.php   # Comment insertion management
 ├── logout.php             # Logout
