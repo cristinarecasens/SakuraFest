@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $id_activitat = $_POST['id_activitat'];
         
         session_start();
-        $user_name = $_SESSION['session'] ?? null;
+        $user_name = $_SESSION['user_name'] ?? null;
 
         // Obtenir l'ID de l'usuari a partir del nom d'usuari
         $sql_user = "SELECT id FROM usuaris WHERE nom = ?";

@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['nom'] = $usuari['nom'];
         $_SESSION['logged'] = 1;
 
-        $_SESSION['session'] = $usuari['nom'];
+        $_SESSION['user_name'] = $usuari['nom'];
 
 
 

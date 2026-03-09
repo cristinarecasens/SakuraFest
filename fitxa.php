@@ -11,10 +11,8 @@ $icones = [
 ];
 
 try {
-
     session_start();
-    $user_name = $_SESSION['session'] ?? null;
-
+    $user_name = $_SESSION['user_name'] ?? null;
     if (isset($_GET['id'])) {
         $id = $_GET['id'];
 
@@ -22,7 +20,6 @@ try {
         $stmt = $pdo->prepare("SELECT * FROM activitats WHERE id = ?");
         $stmt->execute([$id]);
         $activitat = $stmt->fetch();
-
         if (!$activitat) {
             die("No s'ha trobat cap activitat amb aquest ID.");
         }
@@ -31,38 +28,70 @@ try {
         $stmt_comentaris = $pdo->prepare("SELECT c.*, u.nom AS nom_usuari FROM comentaris c JOIN usuaris u ON c.user_id = u.id WHERE c.activitat_id = ?");
         $stmt_comentaris->execute([$id]);
         $comentaris = $stmt_comentaris->fetchAll();
-
-        // Si ens arriba un paràmetre per sumar vot, fem l'UPDATE directament
-        if (isset($_GET['positiu'])) {
-            $stmt_vot = $pdo->prepare("UPDATE comentaris SET positiu = positiu + 1 WHERE id = ?");
-            $stmt_vot->execute([$_GET['positiu']]);
+        
+        // Votació: només permetre un vot per usuari per comentari
+        if ((isset($_GET['positiu']) || isset($_GET['negatiu'])) && isset($_SESSION['user_id'])) {
+            $comment_id = isset($_GET['positiu']) ? $_GET['positiu'] : $_GET['negatiu'];
+            $user_id = $_SESSION['user_id'];
+            $act_id = $id;
+            // Comprova si ja ha votat aquest comentari
+            $stmt_check = $pdo->prepare("SELECT id FROM vot_comentari WHERE act_id = ? AND comment_id = ? AND user_id = ?");
+            $stmt_check->execute([$act_id, $comment_id, $user_id]);
+            if (!$stmt_check->fetch()) {
+                // No ha votat encara, permet votar i registra
+                if (isset($_GET['positiu'])) {
+                    $stmt_vot = $pdo->prepare("UPDATE comentaris SET positiu = positiu + 1 WHERE id = ?");
+                    $stmt_vot->execute([$comment_id]);
+                } else {
+                    $stmt_vot = $pdo->prepare("UPDATE comentaris SET negatiu = negatiu + 1 WHERE id = ?");
+                    $stmt_vot->execute([$comment_id]);
+                }
+                // Inserir registre de vot
+                $stmt_insert = $pdo->prepare("INSERT INTO vot_comentari (act_id, comment_id, user_id) VALUES (?, ?, ?)");
+                $stmt_insert->execute([$act_id, $comment_id, $user_id]);
+            }
+            // Redirigeix igualment per evitar doble vot
             header("Location: fitxa.php?id=" . $id);
             exit;
         }
-        if (isset($_GET['negatiu'])) {
-            $stmt_vot = $pdo->prepare("UPDATE comentaris SET negatiu = negatiu + 1 WHERE id = ?");
-            $stmt_vot->execute([$_GET['negatiu']]);
-            header("Location: fitxa.php?id=" . $id);
-            exit;
-        }
-
         // Si un usuari ja ha introduït un comentari, no li mostrem el formulari
-        $stmt_ja_he_comentat = $pdo->prepare("SELECT * FROM comentaris WHERE user_id = ? AND activitat_id = ?");
-        $stmt_ja_he_comentat->execute([$_SESSION['user_id'], $id]);
-        $ja_he_comentat = $stmt_ja_he_comentat->fetch();
-
-        if($ja_he_comentat) {
-            // Si ja ha comentat, no li mostrem el formulari
-            $mostrar_formulari = false;
+        if (isset($_SESSION['user_id'])) {
+            $stmt_ja_he_comentat = $pdo->prepare("SELECT * FROM comentaris WHERE user_id = ? AND activitat_id = ?");
+            $stmt_ja_he_comentat->execute([$_SESSION['user_id'], $id]);
+            $ja_he_comentat = $stmt_ja_he_comentat->fetch();
+            if($ja_he_comentat) {
+                // Si ja ha comentat, no li mostrem el formulari
+                $mostrar_formulari = false;
+            } else {
+                $mostrar_formulari = true;
+            }
         } else {
             $mostrar_formulari = true;
         }
 
+        // Esborrar comentari si s'ha enviat el formulari
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['elimina_comentari'])) {
+            $comentari_id = $_POST['elimina_comentari'];
+            // Només permet esborrar si l'usuari autenticat és el propietari del comentari
+            $stmt_check = $pdo->prepare("SELECT c.id FROM comentaris c JOIN usuaris u ON c.user_id = u.id WHERE c.id = ? AND u.nom = ?");
+            $stmt_check->execute([$comentari_id, $user_name]);
+            if ($stmt_check->fetch()) {
+                // Primer esborrem els vots associats a aquest comentari
+                $stmt_delete_votes = $pdo->prepare("DELETE FROM vot_comentari WHERE comment_id = ?");
+                $stmt_delete_votes->execute([$comentari_id]);
+
+                // Ara esborrem el comentari
+                $stmt_delete = $pdo->prepare("DELETE FROM comentaris WHERE id = ?");
+                $stmt_delete->execute([$comentari_id]);
+                // Redirigir per evitar re-enviament del formulari
+                header("Location: fitxa.php?id=" . $id);
+                exit;
+            }
+        }
     } else {
         die("No s'ha proporcionat cap ID.");
     }
-
-} catch (\PDOException $e) {
+} catch (PDOException $e) {
     die("Error de connexió: " . $e->getMessage());
 }
 ?>
@@ -101,7 +130,7 @@ try {
     </header>
 
     <nav class="nav-menu">
-        <a href="index.php" class="nav-link">Inici</a>
+        <a href="info.php" class="nav-link">Inici</a>
         <a href="calendari.php" class="nav-link">Calendari</a>
     </nav>
 
@@ -157,7 +186,13 @@ try {
             <?php endif; ?>
 
             <?php foreach ($comentaris as $comentari): ?>
-                <div class="fitxa-comentaris">
+                <div class="fitxa-comentaris" style="position:relative;">
+                    <?php if ($user_name && $user_name === $comentari['nom_usuari']): ?>
+                        <form method="POST" action="fitxa.php?id=<?= $id ?>" style="position:absolute;top:10px;right:10px;display:block;z-index:2;">
+                            <input type="hidden" name="elimina_comentari" value="<?= $comentari['id'] ?>">
+                            <button type="submit" title="Esborrar comentari" style="background:transparent;border:none;cursor:pointer;padding:0;font-size:22px;line-height:1;">🗑️</button>
+                        </form>
+                    <?php endif; ?>
                     <div class="div-autor-hora">
                         <h3 class="autor-comentari">
                             <?= htmlspecialchars($comentari['nom_usuari']) ?>
@@ -169,10 +204,23 @@ try {
                     <p class="text-comentari">
                         <?= htmlspecialchars($comentari['text']) ?>
                     </p>
-                
                     <div class="div-boto-vots">
-                        <button class="boto-positiu" onclick="window.location.href='fitxa.php?id=<?= $id ?>&positiu=<?= $comentari['id'] ?>'">👍 <?= $comentari['positiu'] ?></button>
-                        <button class="boto-negatiu" onclick="window.location.href='fitxa.php?id=<?= $id ?>&negatiu=<?= $comentari['id'] ?>'">👎 <?= $comentari['negatiu'] ?></button>
+                        <?php
+                        $ja_votat = false;
+                        $no_login = !isset($_SESSION['user_id']);
+                        if (!$no_login) {
+                            $stmt_votat = $pdo->prepare("SELECT id FROM vot_comentari WHERE act_id = ? AND comment_id = ? AND user_id = ?");
+                            $stmt_votat->execute([$id, $comentari['id'], $_SESSION['user_id']]);
+                            $ja_votat = $stmt_votat->fetch() ? true : false;
+                        }
+                        if ($ja_votat || $no_login) {
+                            $disabled = 'disabled style="opacity:0.45;cursor:not-allowed;background:transparent;color:#111;border:none;filter:none;"';
+                        } else {
+                            $disabled = '';
+                        }
+                        ?>
+                        <button class="boto-positiu" onclick="window.location.href='fitxa.php?id=<?= $id ?>&positiu=<?= $comentari['id'] ?>'" <?= $disabled ?>>👍 <?= $comentari['positiu'] ?></button>
+                        <button class="boto-negatiu" onclick="window.location.href='fitxa.php?id=<?= $id ?>&negatiu=<?= $comentari['id'] ?>'" <?= $disabled ?>>👎 <?= $comentari['negatiu'] ?></button>
                     </div>
                 </div>
             <?php endforeach; ?>

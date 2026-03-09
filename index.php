@@ -19,7 +19,7 @@ try {
     $activitats = $stmt->fetchAll();
 
     session_start();
-    $user_name = $_SESSION['session'] ?? null;
+    $user_name = $_SESSION['user_name'] ?? null;
 
 
 } catch (\PDOException $e) {

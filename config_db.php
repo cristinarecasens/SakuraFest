@@ -12,7 +12,7 @@ $pass    = $env['DB_PASS'];
 $google_maps_key = $env['GOOGLE_MAPS_KEY'];
 
 $charset = 'utf8';
-$dsn = "mysql:host=$host;port=3306;dbname=$db;charset=$charset";
+$dsn = "mysql:host=$host;port=3307;dbname=$db;charset=$charset";
 
 $options = [
     PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
