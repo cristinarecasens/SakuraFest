@@ -1,0 +1,407 @@
+@import url('https://fonts.cdnfonts.com/css/mamoru');
+
+body{
+    margin: 0;
+    padding: 0;
+    background-color: #f7f3f0;
+}
+
+.header-sakura {
+    width: 100%;
+    background: #b3002d;
+    border-bottom: none;
+    padding: 14px 0;
+
+    display: flex;           
+    justify-content: center; 
+    align-items: center;     
+
+    height: 100px;
+}
+
+.header-container {
+
+    max-width: 1200px;
+    margin: 0 auto;
+
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    padding: 0 40px;
+}
+
+.logo-header {
+    height: 60px;
+    width: auto;
+}
+
+.titol-header {
+    font-family: "Mamoru", sans-serif;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: white; 
+    margin: 0;
+    letter-spacing: 1px;
+}
+
+#titol-subtitol{
+    display:flex;
+    flex-direction: column; /* targetes una sota l'altra */
+    align-items: center;
+}
+
+#botons-login{
+    position:absolute;
+    padding: 20px;
+    right: 0; 
+    top: 0;
+
+}
+
+#boto-login{
+    padding: 8px 16px;
+    background: #140e0e;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    font-weight: bold;
+    white-space: nowrap;
+    transition: background 0.3s ease;
+    display:flex;
+    align-items: center;
+}
+
+#boto-login:hover {
+    background: #4f3232;
+}
+
+#boto-login .btn-filtre-icon {
+    width: 20px;   /* mida de la icona */
+    height: 20px;
+}
+
+/* NAV MENU */
+.nav-menu {
+    width: 100%;
+    background: #140e0e;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    padding: 8px 0;
+}
+
+.nav-link {
+    color: #ffffff;
+    text-decoration: none;
+    font-family: "Noto Sans", sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    transition: opacity 0.2s;
+}
+
+.nav-link:hover {
+    opacity: 0.75;
+}
+
+.nav-link.nav-actiu {
+    border-bottom: 2px solid #ffffff;
+}
+
+/*color flor : #FFEDF3*/
+
+#subtitol {
+    color: white;
+    font-family: "Noto Sans", sans-serif;
+    margin: 0px;
+}
+
+/* Contenidor general */
+main {
+    overflow-y: hidden;
+    display: flex;
+    flex-direction: column; /* targetes una sota l'altra */
+    align-items: center;
+    gap: 20px; /* separació entre targetes */
+    padding: 40px;
+    background: #f7f3f0;
+    font-family: "Noto Sans", sans-serif;    
+}
+
+/* Targeta horitzontal i baixa */
+#fitxa-activitat {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    width: 80%;            /* ocupa gran part de la pantalla */
+    max-width: 900px;      /* ample màxim */
+    min-height: 300px;     /* alçada baixa però flexible */
+
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 12px 18px;
+
+    border: 2px solid #e8d5d0;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+
+}
+
+/* Efecte hover */
+#fitxa-activitat:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.20);
+}
+
+/* Imatge petita */
+#fitxa-activitat img {
+    width: 200px;
+    height: 200px;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.boto-ubicacio {
+    padding: 8px 16px;
+    background: #e63946;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    font-weight: bold;
+    white-space: nowrap;
+    transition: background 0.3s ease;
+}
+
+.boto-ubicacio:hover {
+    background: #b3002d;
+}
+
+#div-boto-preu-fitxa{
+    display:flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 100px;
+    padding-right: 30px;
+}
+
+
+/* Títol */
+.titol-fitxa {
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: #b3002d;
+    margin: 0;
+}
+
+/* Textos */
+.tipus-tematica-fitxa,
+.dia-lloc-fitxa{
+    font-size: 1.2rem;
+    color: #4a4a4a;
+    margin: 0;
+}
+
+.preu-fitxa{
+    font-size: 1.2rem;
+    color: #4a4a4a;
+    margin: 0;
+    margin-bottom: 10px;
+}
+
+.text-fitxa{
+    flex: 1; /* ocupa tot l'espai central */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* Mapa */
+#map {
+    width: 80%;
+    max-width: 900px;
+    height: 500px;
+    border-radius: 12px;
+    border: 2px solid #e8d5d0;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+}
+
+#div-comentaris {
+    width: 80%;
+    max-width: 900px;
+}
+
+#div-comentaris h2{
+    font-family: "Mamoru", sans-serif;
+    color: #b3002d;
+    font-size: 1.8rem;
+    text-align: center;
+}
+
+/* Fitxa de cada comentari */
+.fitxa-comentaris {
+    width: 100%;
+    box-sizing: border-box;
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 16px 24px;
+    margin: 0 auto 16px auto;
+    border: 2px solid #e8d5d0;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    font-family: "Noto Sans", sans-serif;
+}
+
+.fitxa-comentaris:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.20);
+}
+
+/* Autor i hora a la mateixa línia */
+.div-autor-hora {
+    width: 70%;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.autor-comentari {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #b3002d;
+    margin: 0;
+}
+
+.hora-comentari {
+    font-size: 0.85rem;
+    color: #999;
+    margin: 0;
+}
+
+.text-comentari {
+    font-size: 1rem;
+    color: #4a4a4a;
+    margin: 10px 0;
+}
+
+/* Botons de vot a la mateixa línia */
+.div-boto-vots {
+    display: flex;
+    gap: 10px;
+}
+
+.boto-positiu,
+.boto-negatiu {
+    padding: 6px 14px;
+    border: 2px solid #e8d5d0;
+    border-radius: 8px;
+    background: #f7f3f0;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background 0.2s ease;
+}
+
+.boto-positiu:hover {
+    background: #d4edda;
+}
+
+.boto-negatiu:hover {
+    background: #f8d7da;
+}
+
+/* Formulari de comentari */
+.form-comentari {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.form-comentari textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px 16px;
+    border: 2px solid #e8d5d0;
+    border-radius: 12px;
+    font-family: "Noto Sans", sans-serif;
+    font-size: 1rem;
+    color: #4a4a4a;
+    background: #ffffff;
+    resize: vertical;
+    outline: none;
+    transition: border-color 0.2s ease;
+}
+
+.form-comentari textarea:focus {
+    border-color: #b3002d;
+}
+
+.boto-enviar-comentari {
+    align-self: flex-end;
+    padding: 8px 16px;
+    background: #e63946;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s ease;
+}
+
+.boto-enviar-comentari:hover {
+    background: #b3002d;
+}
+
+
+.nav-ordenar-comentaris {
+    display: flex;
+    gap: 12px;
+    justify-content: flex-start;
+    margin-bottom: 20px;
+}
+
+
+.boto-ordenar {
+    color: #222;
+    background: transparent;
+    text-decoration: none;
+    font-family: "Noto Sans", sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    padding: 6px 18px;
+    border-radius: 8px;
+    border: transparent;
+    transition: color 0.2s;
+    cursor: pointer;
+    outline: none;
+    box-shadow: none;
+    margin-bottom: 0;
+    opacity: 1;
+}
+
+.boto-ordenar:hover {
+    color: #b3002d;
+    text-decoration: underline;
+    background: transparent;
+}
+
+.boto-ordenar.active, .boto-ordenar:active {
+    color: #b3002d;
+    background: transparent;
+    text-decoration: underline;
+}
+

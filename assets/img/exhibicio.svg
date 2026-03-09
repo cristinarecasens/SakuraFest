@@ -1,0 +1,23 @@
+<svg width="128" height="128" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+  <!-- Fons -->
+  <rect x="8" y="8" width="112" height="112" rx="16" fill="#e63946"/>
+
+  <!-- Test (base del bonsai) -->
+  <rect x="40" y="86" width="48" height="12" rx="3" fill="#ffd6d9"/>
+
+  <!-- Tronc sinuós -->
+  <path d="M64 86 
+           C60 74, 70 68, 64 56 
+           C58 44, 70 38, 64 28" 
+        stroke="#ffd6d9" 
+        stroke-width="8" 
+        fill="none" 
+        stroke-linecap="round"/>
+
+  <!-- Copa principal -->
+  <circle cx="64" cy="36" r="16" fill="#ffd6d9"/>
+
+  <!-- Masses de fulles laterals -->
+  <circle cx="48" cy="44" r="10" fill="#ffd6d9"/>
+  <circle cx="80" cy="44" r="10" fill="#ffd6d9"/>
+</svg>

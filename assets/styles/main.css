@@ -1,0 +1,498 @@
+
+@import url('https://fonts.cdnfonts.com/css/mamoru');
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+/* NAV MENU */
+.nav-menu {
+    width: 100%;
+    background: #140e0e;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    padding: 8px 0;
+}
+
+.nav-link {
+    color: #ffffff;
+    text-decoration: none;
+    font-family: "Noto Sans", sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    transition: opacity 0.2s;
+}
+
+.nav-link:hover {
+    opacity: 0.75;
+}
+
+.nav-link.nav-actiu {
+    border-bottom: 2px solid #ffffff;
+}
+
+.header-sakura {
+    width: 100%;
+    background: #b3002d;
+    border-bottom: none;
+    padding: 14px 0;
+
+    display: flex;           
+    justify-content: center; 
+    align-items: center;     
+
+    height: 100px;
+}
+
+.header-container {
+
+    max-width: 1200px;
+    margin: 0 auto;
+
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    padding: 0 40px;
+}
+
+.logo-header {
+    height: 60px;
+    width: auto;
+}
+
+.titol-header {
+    font-family: "Mamoru", sans-serif;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: white; 
+    margin: 0;
+    letter-spacing: 1px;
+}
+
+#titol-subtitol{
+    display:flex;
+    flex-direction: column; /* targetes una sota l'altra */
+    align-items: center;
+}
+
+#botons-login{
+    position:absolute;
+    padding: 20px;
+    right: 0; 
+    top: 0;
+
+}
+
+#boto-login{
+    padding: 8px 16px;
+    background: #140e0e;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    font-weight: bold;
+    white-space: nowrap;
+    transition: background 0.3s ease;
+    display:flex;
+    align-items: center;
+}
+
+#boto-login:hover {
+    background: #4f3232;
+}
+
+#boto-login .btn-filtre-icon {
+    width: 20px;   /* mida de la icona */
+    height: 20px;
+}
+
+/*color flor : #FFEDF3*/
+
+#subtitol {
+    color: white;
+    font-family: "Noto Sans", sans-serif;
+    margin: 0px;
+}
+
+
+/* Contenidor general */
+main {
+    display: flex;
+    flex-direction: column; /* targetes una sota l'altra */
+    align-items: center;
+    gap: 20px; /* separació entre targetes */
+    padding: 40px;
+    background: #f7f3f0;
+    min-height: 100vh;
+    font-family: "Noto Sans", sans-serif;
+}
+
+
+
+/* Botons dels filtres */
+#botons-filtre{
+    display: flex;
+    justify-content: space-between; /* botons separats */
+    width: 80%; 
+    max-width: 900px; 
+    gap: 20px; 
+}
+
+#div-filtres{
+    display:none;
+}
+
+#botons-filtre .estil-boto-mostrar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    gap: 8px;                /* espai entre icona i text */
+    padding: 12px 20px;      /* mida del botó */
+    background-color: #e63946; /* mateix color que boto reserva */
+    color: white;
+    border: none;
+    border-radius: 12px;     /* com els botons de targetes */
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.2s;
+    flex: 1 1 150px;         /* s’adapta amb l’amplada disponible */
+    min-width: 120px;
+}
+
+#botons-filtre .estil-boto-mostrar:hover {
+    background-color: #b3002d; /* efecte hover */
+}
+
+#botons-filtre .btn-filtre-icon {
+    width: 20px;   /* mida de la icona */
+    height: 20px;
+}
+
+#div-filtres {
+    display: none;
+}
+
+.div-filtre {
+    display: flex;
+    flex-direction: column;  
+    flex: 1 1 0;             /* cada filtre ocupa la mateixa proporció */
+    min-width: 200px;        /* evita que sean demasiado estrechos */
+}
+
+.div-filtre-nom {
+    flex: 1 1 100%;          /* ocupa tota la fila */
+}
+
+.div-filtre label {
+    margin-bottom: 5px;      /* espacio entre etiqueta y select */
+    font-weight: 600;
+}
+
+.div-filtre select,
+.div-filtre input[type="text"] {
+    padding: 8px 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+}
+
+/*BOTO ESBORRAR FILTRES*/
+#esborrar-filtres{
+    display: none;
+}
+
+#boto-esborrar-filtres{
+    padding: 8px 16px;
+    background: #e63946;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    font-weight: bold;
+    white-space: nowrap;
+    transition: background 0.3s ease;
+}
+
+#boto-esborrar-filtres:hover {
+    background: #b3002d;
+}
+
+/* ORDENACIO */
+#div-ordenar {
+    display: none;
+}
+
+.div-ordre {
+    display: flex;
+    flex-direction: column;  
+    flex: 1 1 0;             /* cada filtre ocupa la mateixa proporció */
+    min-width: 200px;        /* evita que sean demasiado estrechos */
+}
+
+.div-ordre label {
+    margin-bottom: 5px;      /* espacio entre etiqueta y select */
+    font-weight: 600;
+}
+
+.div-ordre select {
+    padding: 8px 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+}
+
+/* Targeta horitzontal i baixa */
+.card {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    width: 80%;            /* ocupa gran part de la pantalla */
+    max-width: 900px;      /* ample màxim */
+    min-height: 110px;     /* alçada baixa però flexible */
+
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 12px 18px;
+
+    border: 2px solid #e8d5d0;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Efecte hover */
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.20);
+}
+
+/* Imatge petita */
+.card img {
+    width: 75px;
+    height: 75px;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+/* Contenidor del text */
+.text-container {
+    flex: 1; /* ocupa tot l'espai central */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2px;
+}
+
+/* Títol */
+.titol-targeta {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #b3002d;
+    margin: 0;
+}
+
+/* Textos */
+.tipus-tematica-targeta,
+.dia-lloc-targeta{
+    font-size: 0.85rem;
+    color: #4a4a4a;
+    margin: 0;
+}
+
+.preu-targeta{
+    font-size: 0.9rem;
+    color: #4a4a4a;
+    margin: 0;
+    margin-bottom: 10px;
+}
+
+.preu-boto{
+    display:flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+/* Botó compacte */
+.boto-compra {
+    padding: 8px 16px;
+    background: #e63946;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    font-weight: bold;
+    white-space: nowrap;
+    transition: background 0.3s ease;
+}
+
+.boto-compra:hover {
+    background: #b3002d;
+}
+
+/* ===== CALENDARI ===== */
+
+.calendar-container {
+    width: 80%;
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 0 20px;
+}
+
+.calendar-header h2 {
+    text-align: center;
+    font-family: "Mamoru", sans-serif;
+    font-size: 1.8rem;
+    color: #b3002d;
+    margin-bottom: 16px;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 4px;
+}
+
+.weekday {
+    text-align: center;
+    font-weight: 700;
+    font-size: 0.85rem;
+    padding: 8px 0;
+    background: #140e0e;
+    color: #fff;
+    border-radius: 4px;
+}
+
+.day {
+    min-height: 70px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 6px;
+    background: #fff;
+    position: relative;
+    transition: background 0.2s, box-shadow 0.2s;
+}
+
+.day-empty {
+    border: none;
+    background: transparent;
+}
+
+.day-number {
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: #333;
+}
+
+.day-has-events {
+    background: #fff0f2;
+    border-color: #e6394650;
+}
+
+.day-has-events:hover {
+    background: #ffe0e4;
+    box-shadow: 0 2px 8px rgba(230, 57, 70, 0.2);
+}
+
+.day.active {
+    background: #e63946;
+    border-color: #e63946;
+}
+
+.day.active .day-number {
+    color: #fff;
+}
+
+.day.active .event-badge {
+    background: #fff;
+    color: #e63946;
+}
+
+.event-badge {
+    display: inline-block;
+    margin-top: 4px;
+    padding: 2px 8px;
+    background: #e63946;
+    color: #fff;
+    border-radius: 10px;
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+
+/* Detall desplegable */
+.detail-row {
+    display: none;
+    grid-column: 1 / -1;
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin: 4px 0;
+}
+
+.detail-row h4 {
+    margin: 0 0 12px;
+    color: #b3002d;
+    font-size: 1.1rem;
+}
+
+.events-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.event-item-detail {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #fff;
+    padding: 10px 14px;
+    border-radius: 8px;
+    border: 1px solid #eee;
+}
+
+.event-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.event-info strong {
+    font-size: 0.95rem;
+    color: #333;
+}
+
+.event-info small {
+    font-size: 0.8rem;
+    color: #777;
+}
+
+.btn-fitxa {
+    display: inline-block;
+    padding: 6px 14px;
+    background: #e63946;
+    color: #fff;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    white-space: nowrap;
+    transition: background 0.2s;
+}
+
+.btn-fitxa:hover {
+    background: #b3002d;
+}
+
